@@ -62,7 +62,7 @@ export const LoginModal = ({ isOpen, onClose, onShowToast, onSwitchToRegister })
         )}
 
         {/* Form nhập liệu */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
           <div>
             <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
               Email
@@ -72,6 +72,7 @@ export const LoginModal = ({ isOpen, onClose, onShowToast, onSwitchToRegister })
               <input
                 type="email"
                 required
+                autoComplete="off"
                 placeholder="user@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -90,6 +91,7 @@ export const LoginModal = ({ isOpen, onClose, onShowToast, onSwitchToRegister })
                 type="password"
                 required
                 minLength={6}
+                autoComplete="new-password"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

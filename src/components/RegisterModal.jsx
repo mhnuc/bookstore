@@ -63,7 +63,7 @@ export const RegisterModal = ({ isOpen, onClose, onShowToast, onSwitchToLogin })
         )}
 
         {/* Form nhập liệu */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
           <div>
             <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
               Họ và Tên
@@ -73,6 +73,7 @@ export const RegisterModal = ({ isOpen, onClose, onShowToast, onSwitchToLogin })
               <input
                 type="text"
                 required
+                autoComplete="off"
                 placeholder="Nguyễn Văn A"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
@@ -90,6 +91,7 @@ export const RegisterModal = ({ isOpen, onClose, onShowToast, onSwitchToLogin })
               <input
                 type="email"
                 required
+                autoComplete="off"
                 placeholder="user@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -108,6 +110,7 @@ export const RegisterModal = ({ isOpen, onClose, onShowToast, onSwitchToLogin })
                 type="password"
                 required
                 minLength={6}
+                autoComplete="new-password"
                 placeholder="Tối thiểu 6 ký tự"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
