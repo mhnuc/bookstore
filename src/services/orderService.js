@@ -1,6 +1,6 @@
 import { supabase, isSupabaseConnected } from '../lib/supabase';
 
-export const createOrder = async ({ userId, guestEmail, shippingAddress, phone, cartItems, totalAmount }) => {
+export const createOrder = async ({ userId, guestEmail, shippingAddress, phone, cartItems, totalAmount, paymentMethod = 'cod' }) => {
   if (!isSupabaseConnected()) {
     const mockOrder = {
       id: Date.now(),
@@ -10,6 +10,7 @@ export const createOrder = async ({ userId, guestEmail, shippingAddress, phone, 
       total_amount: totalAmount,
       shipping_address: shippingAddress,
       phone,
+      payment_method: paymentMethod,
       status: 'pending',
       order_items: cartItems.map((item, idx) => ({
         id: Date.now() + idx,

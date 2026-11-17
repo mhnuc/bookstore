@@ -35,7 +35,8 @@ export const CheckoutModal = ({ isOpen, onClose, onShowToast, onOrderSuccess }) 
       shippingAddress,
       phone,
       cartItems: cart,
-      totalAmount
+      totalAmount,
+      paymentMethod
     });
 
     setSubmitting(false);
@@ -168,6 +169,46 @@ export const CheckoutModal = ({ isOpen, onClose, onShowToast, onOrderSuccess }) 
                 <span className="text-xs">Chuyển khoản QR Ngân Hàng</span>
               </label>
             </div>
+
+            {paymentMethod === 'qr' && (
+              <div className="mt-4 p-5 bg-gradient-to-b from-indigo-50/80 to-slate-50 border border-indigo-100 rounded-2xl flex flex-col items-center text-center">
+                <p className="text-base font-bold text-indigo-900 mb-3 flex items-center gap-2">
+                  <span>📱</span> Quét mã để thanh toán
+                </p>
+                <div className="bg-white p-3 rounded-2xl shadow-md border border-indigo-100 mb-3 max-w-[240px]">
+                  <img 
+                    src="/qr-payment.png" 
+                    alt="Mã QR thanh toán MB Bank" 
+                    className="w-full h-auto object-contain rounded-xl"
+                  />
+                </div>
+                <div className="text-xs text-slate-600 space-y-1.5 w-full max-w-sm bg-white/90 p-3 rounded-xl border border-indigo-100 shadow-sm text-left">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Ngân hàng:</span>
+                    <span className="font-semibold text-slate-800">MB Bank (TMCP Quân đội)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Số tài khoản:</span>
+                    <span className="font-mono font-bold text-indigo-600">0000040973128</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Chủ tài khoản:</span>
+                    <span className="font-semibold text-slate-800">NGUYEN MINH QUOC</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Số tiền:</span>
+                    <span className="font-extrabold text-indigo-700">{formatPrice(totalAmount)}</span>
+                  </div>
+                  <div className="flex justify-between border-t border-slate-100 pt-1.5">
+                    <span className="text-slate-500">Nội dung CK:</span>
+                    <span className="font-mono font-bold text-indigo-600">THANHTOANBOOKVERSE</span>
+                  </div>
+                </div>
+                <p className="text-[11px] text-slate-400 mt-2">
+                  * Mở ứng dụng ngân hàng bất kỳ để quét mã QR chuyển khoản nhanh 24/7.
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-2">
